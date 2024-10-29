@@ -1,0 +1,64 @@
+.root {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: white;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: white;
+    -fx-border-color: #555555;
+}
+
+.button:hover {
+    -fx-background-color: #4c4f51;
+}
+
+.text-field {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #888888;
+}
+
+.list-view {
+    -fx-background-color: #3c3f41;
+    -fx-control-inner-background: #3c3f41;
+}
+
+.list-cell {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: white;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #4b6eaf;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #494949;
+}
+
+.separator {
+    -fx-background-color: #555555;
+}
+
+.color-picker {
+    -fx-background-color: #3c3f41;
+    -fx-border-color: #555555;
+}
+
+.scroll-bar {
+    -fx-background-color: #3c3f41;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #555555;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: #3c3f41;
+} 

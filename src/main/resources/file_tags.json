@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "C:\\Users\\lucas\\Downloads\\UnityHubSetup.exe",
+    "tags": [
+      {
+        "name": "escola",
+        "color": "#000080"
+      }
+    ],
+    "isDirectory": false
+  },
+  {
+    "filePath": "C:\\Users\\lucas\\Downloads\\Lucas-Augusto-Hartmann-Currículo.pdf",
+    "tags": [
+      {
+        "name": "facul",
+        "color": "#CC3333"
+      }
+    ],
+    "isDirectory": false
+  }
+]

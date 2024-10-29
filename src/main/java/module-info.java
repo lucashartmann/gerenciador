@@ -1,8 +1,12 @@
-module com.example {
+module app {
     requires javafx.controls;
     requires javafx.fxml;
-    requires com.google.gson; // Adicione isso se você estiver usando Gson
+    requires com.google.gson;
+    requires java.desktop;
 
-    opens com.example to javafx.fxml; // Permite que o JavaFX acesse as classes em com.example
-    exports com.example; // Exporta o pacote para que possa ser acessado por outros módulos
+    exports main;
+    exports model;
+    exports service;
+    
+    opens model to com.google.gson;
 }
