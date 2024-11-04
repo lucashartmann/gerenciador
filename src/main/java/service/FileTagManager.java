@@ -27,7 +27,6 @@ public class FileTagManager {
     public void addFile(Path filePath) {
         boolean fileExists = files.stream()
                 .anyMatch(file -> file.getFilePath().equals(filePath));
-        
         if (!fileExists) {
             files.add(new TaggedFile(filePath));
         }
@@ -35,12 +34,10 @@ public class FileTagManager {
 
     public void addTagToFile(Path filePath, FileTag tag) {
         System.out.println("Adicionando tag '" + tag.getName() + "' ao arquivo: " + filePath);
-        
         TaggedFile targetFile = files.stream()
                 .filter(file -> file.getFilePath().equals(filePath))
                 .findFirst()
                 .orElse(null);
-
         if (targetFile == null) {
             System.out.println("Arquivo não encontrado, adicionando novo...");
             addFile(filePath);
@@ -49,7 +46,6 @@ public class FileTagManager {
                     .findFirst()
                     .get();
         }
-
         targetFile.addTag(tag);
         System.out.println("Tag adicionada com sucesso!");
     }
@@ -64,6 +60,16 @@ public class FileTagManager {
 
     public List<TaggedFile> getFiles() {
         return files;
+    }
+
+    public ArrayList<FileTag> listTags(){
+        ArrayList<FileTag> tags = new ArrayList<>();
+        for(TaggedFile file : files){
+            for(FileTag tag : file.getTags()){
+                tags.add(tag);
+            }
+        }
+        return tags;
     }
 
     public void loadFromPersistence() {

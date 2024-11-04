@@ -5,6 +5,10 @@
       {
         "name": "escola",
         "color": "#000080"
+      },
+      {
+        "name": "Faculdade",
+        "color": "#FFFFFF"
       }
     ],
     "isDirectory": false
@@ -15,6 +19,26 @@
       {
         "name": "facul",
         "color": "#CC3333"
+      }
+    ],
+    "isDirectory": false
+  },
+  {
+    "filePath": "C:\\Users\\182410156\\Downloads\\XORXOR1336990616.jpg",
+    "tags": [
+      {
+        "name": "Senac",
+        "color": "#FF00FF"
+      }
+    ],
+    "isDirectory": false
+  },
+  {
+    "filePath": "C:\\Users\\182410156\\Downloads\\ZZZZZ2257280674.doc",
+    "tags": [
+      {
+        "name": "Pedro",
+        "color": "#FFFF80"
       }
     ],
     "isDirectory": false
