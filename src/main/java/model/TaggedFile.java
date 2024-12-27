@@ -50,6 +50,10 @@ public class TaggedFile {
         return isDirectory;
     }
 
+    public void clearTags() {
+        this.tags.clear();
+    }
+
     @Override
     public String toString() {
         return filePath;
@@ -57,8 +61,10 @@ public class TaggedFile {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         TaggedFile that = (TaggedFile) o;
         return filePath.equals(that.filePath);
     }

@@ -1,46 +1,22 @@
 [
   {
     "filePath": "C:\\Users\\lucas\\Downloads\\UnityHubSetup.exe",
-    "tags": [
-      {
-        "name": "escola",
-        "color": "#000080"
-      },
-      {
-        "name": "Faculdade",
-        "color": "#FFFFFF"
-      }
-    ],
+    "tags": [],
     "isDirectory": false
   },
   {
     "filePath": "C:\\Users\\lucas\\Downloads\\Lucas-Augusto-Hartmann-Currículo.pdf",
-    "tags": [
-      {
-        "name": "facul",
-        "color": "#CC3333"
-      }
-    ],
+    "tags": [],
     "isDirectory": false
   },
   {
     "filePath": "C:\\Users\\182410156\\Downloads\\XORXOR1336990616.jpg",
-    "tags": [
-      {
-        "name": "Senac",
-        "color": "#FF00FF"
-      }
-    ],
+    "tags": [],
     "isDirectory": false
   },
   {
     "filePath": "C:\\Users\\182410156\\Downloads\\ZZZZZ2257280674.doc",
-    "tags": [
-      {
-        "name": "Pedro",
-        "color": "#FFFF80"
-      }
-    ],
+    "tags": [],
     "isDirectory": false
   }
 ]

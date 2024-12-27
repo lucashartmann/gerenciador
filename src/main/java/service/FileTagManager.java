@@ -62,10 +62,10 @@ public class FileTagManager {
         return files;
     }
 
-    public ArrayList<FileTag> listTags(){
+    public ArrayList<FileTag> listTags() {
         ArrayList<FileTag> tags = new ArrayList<>();
-        for(TaggedFile file : files){
-            for(FileTag tag : file.getTags()){
+        for (TaggedFile file : files) {
+            for (FileTag tag : file.getTags()) {
                 tags.add(tag);
             }
         }
@@ -74,10 +74,11 @@ public class FileTagManager {
 
     public void loadFromPersistence() {
         Gson gson = new GsonBuilder()
-            .setPrettyPrinting()
-            .create();
+                .setPrettyPrinting()
+                .create();
         try (FileReader reader = new FileReader(PERSISTENCE_FILE)) {
-            Type fileListType = new TypeToken<ArrayList<TaggedFile>>(){}.getType();
+            Type fileListType = new TypeToken<ArrayList<TaggedFile>>() {
+            }.getType();
             List<TaggedFile> loadedFiles = gson.fromJson(reader, fileListType);
             if (loadedFiles != null) {
                 this.files = loadedFiles;
@@ -92,14 +93,14 @@ public class FileTagManager {
         System.out.println("Iniciando salvamento...");
         System.out.println("Caminho do arquivo: " + PERSISTENCE_FILE);
         System.out.println("Número de arquivos: " + files.size());
-        
+
         Gson gson = new GsonBuilder()
-            .setPrettyPrinting()
-            .create();
-            
+                .setPrettyPrinting()
+                .create();
+
         try (FileWriter writer = new FileWriter(PERSISTENCE_FILE)) {
             String json = gson.toJson(files);
-            //System.out.println("JSON gerado: " + json);
+            // System.out.println("JSON gerado: " + json);
             writer.write(json);
             writer.flush();
             System.out.println("Arquivo salvo com sucesso!");
@@ -107,5 +108,15 @@ public class FileTagManager {
             System.err.println("Erro ao salvar arquivo: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public void removeTagFromFile(Path filePath) {
+        System.out.println("Removendo tag do arquivo: " + filePath);
+        files.forEach(file -> {
+            if (file.getFilePath().equals(filePath)) {
+                file.clearTags();
+            }
+        });
+        System.out.println("Tag removida com sucesso!");
     }
 }

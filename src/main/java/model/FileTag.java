@@ -7,7 +7,8 @@ public class FileTag {
     private String color;
 
     // Construtor vazio para o Gson
-    public FileTag() {}
+    public FileTag() {
+    }
 
     public FileTag(String name, Color color) {
         this.name = name;
@@ -32,9 +33,9 @@ public class FileTag {
 
     private String convertColorToString(Color color) {
         return String.format("#%02X%02X%02X",
-            (int) (color.getRed() * 255),
-            (int) (color.getGreen() * 255),
-            (int) (color.getBlue() * 255));
+                (int) (color.getRed() * 255),
+                (int) (color.getGreen() * 255),
+                (int) (color.getBlue() * 255));
     }
 
     @Override

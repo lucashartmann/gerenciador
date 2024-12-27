@@ -7,6 +7,6 @@ module app {
     exports main;
     exports model;
     exports service;
-    
+
     opens model to com.google.gson;
 }

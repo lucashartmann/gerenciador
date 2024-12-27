@@ -163,11 +163,30 @@ public class MainApp extends Application {
             fileListView.refresh();
             System.out.println("Tag editada com sucesso!");
         });
+        Button removeTag = new Button("Remover tag");
+        removeTag.setOnAction(e -> {
+            TaggedFile selectedFile = fileListView.getSelectionModel().getSelectedItem();
+            if (selectedFile != null) {
+                fileTagManager.removeTagFromFile(selectedFile.getFilePath());
+                // Atualiza as visualizações
+                updateTagList(selectedFile);
+                // Atualiza a lista de arquivos com tags
+                taggedFilesListView.setItems(FXCollections.observableArrayList(
+                        fileTagManager.getFiles().stream()
+                                .filter(file -> !file.getTags().isEmpty())
+                                .collect(Collectors.toList())));
+                // Salva as alterações
+                fileTagManager.saveToPersistence();
+                // Atualiza a visualização
+                fileListView.refresh();
+                System.out.println("Tag removida com sucesso!");
+            }
+        });
         // Mostrar todas as tags existentes
         Button showTags = new Button("Mostrar tags");
         showTags.setOnAction(e -> {
             tagListView.getItems().clear();
-            for(FileTag tag : fileTagManager.listTags()){
+            for (FileTag tag : fileTagManager.listTags()) {
                 tagListView.getItems().add(tag);
                 fileListView.refresh();
             }
@@ -201,7 +220,7 @@ public class MainApp extends Application {
                 }
             }
         });
-        HBox tagInputBoxRight = new HBox(10, tagNameField, tagColorPicker, addTagButton, editTag, showTags);
+        HBox tagInputBoxRight = new HBox(10, tagNameField, tagColorPicker, addTagButton, editTag, showTags, removeTag);
         HBox buttonBoxLeft = new HBox(10, openFileButton);
         // Adiciona componentes ao painéis (em ordem)
         rightPanel.getChildren().addAll(
