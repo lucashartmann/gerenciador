@@ -1,9 +1,6 @@
 name: Maven Package
 
 on:
-  push:
-    branches:
-      - main
   release:
     types: [created]
 
@@ -27,6 +24,6 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -Dmaven.test.skip=true --settings /dev/null
+      run: mvn deploy -Dmaven.test.skip=true
       env:
         GITHUB_TOKEN: ${{ github.token }}
