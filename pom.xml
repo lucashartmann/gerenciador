@@ -71,4 +71,11 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Internal Repository</name>
+            <url>C:\Users\X-1212\.m2\repository</url>
+        </repository>
+    </distributionManagement>
 </project>
