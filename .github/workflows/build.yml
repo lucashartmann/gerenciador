@@ -36,7 +36,7 @@ jobs:
           jpackage --input target/ --name GerenciadorTags --main-jar gerenciador-1.0-SNAPSHOT.jar --type exe --dest output/
 
       - name: Upload ZIP file
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: GerenciadorTags
           path: output/GerenciadorTags.zip
