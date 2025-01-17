@@ -8,35 +8,27 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Usando o Windows para criar o arquivo .exe
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK
+      - name: Set up JDK (with distribution)
         uses: actions/setup-java@v2
         with:
-          java-version: '11'  
+          java-version: '11'
+          distribution: 'adoptopenjdk'  # Usando a distribuição 'adoptopenjdk' ou 'zulu'
 
       - name: Build with Maven
         run: mvn clean package
-
-      - name: List target directory
-        run: ls target/
-
-      - name: Create ZIP file
-        run: |
-          mkdir output
-          cp target/*.jar output/
-          zip -r output/GerenciadorTags.zip output/
 
       - name: Create EXE file
         run: |
           jpackage --input target/ --name GerenciadorTags --main-jar gerenciador-1.0-SNAPSHOT.jar --type exe --dest output/
 
-      - name: Upload ZIP file
+      - name: Upload EXE file
         uses: actions/upload-artifact@v3
         with:
-          name: GerenciadorTags
-          path: output/GerenciadorTags.zip
+          name: GerenciadorTags-EXE
+          path: output/GerenciadorTags.exe
