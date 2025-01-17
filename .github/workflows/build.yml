@@ -1,0 +1,42 @@
+name: Build and Package
+
+on:
+  push:
+    branches:
+      - main  
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  
+
+      - name: Build with Maven
+        run: mvn clean package
+
+      - name: List target directory
+        run: ls target/
+
+      - name: Create ZIP file
+        run: |
+          mkdir output
+          cp target/*.jar output/
+          zip -r output/GerenciadorTags.zip output/
+
+      - name: Create EXE file
+        run: |
+          jpackage --input target/ --name GerenciadorTags --main-jar gerenciador-1.0-SNAPSHOT.jar --type exe --dest output/
+
+      - name: Upload ZIP file
+        uses: actions/upload-artifact@v2
+        with:
+          name: GerenciadorTags
+          path: output/GerenciadorTags.zip
