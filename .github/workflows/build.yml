@@ -8,27 +8,43 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  # Usando o Windows para criar o arquivo .exe
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK (with distribution)
+      - name: Set up JDK
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'temurin'  
+          distribution: 'temurin'
 
       - name: Build with Maven
         run: mvn clean package
 
+      - name: Ensure output directory exists
+        run: mkdir output
+
+      - name: List target directory
+        run: dir target
+
+      - name: Check if jpackage is available
+        run: jpackage --version
+
       - name: Create EXE file
         run: |
-          jpackage --input target/ --name GerenciadorTags --main-jar gerenciador-1.0-SNAPSHOT.jar --type exe --dest output/
+          jpackage --input target/ \
+                   --name GerenciadorTags \
+                   --main-jar gerenciador-1.0-SNAPSHOT.jar \
+                   --type exe \
+                   --dest output/
+
+      - name: Debug output directory
+        run: dir output
 
       - name: Upload EXE file
         uses: actions/upload-artifact@v3
         with:
           name: GerenciadorTags-EXE
-          path: output/GerenciadorTags.exe
+          path: output/**/*.exe
